@@ -513,9 +513,9 @@ html {
     transition: opacity 0.3s ease;
     pointer-events: none;
     z-index: 1; /* Ensure text appears above the icon */
-    white-space: nowrap; /* Prevent text wrapping */
-    overflow: hidden; /* Ensure text doesn’t overflow */
-    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+    /* //white-space: nowrap; Prevent text wrapping */
+    /* overflow: hidden; Ensure text doesn’t overflow */
+    /* text-overflow: ellipsis; Add ellipsis for overflowed text */
   }
   
   .tech-icons:hover::after {
