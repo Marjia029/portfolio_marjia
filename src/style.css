@@ -486,6 +486,11 @@ html {
     .tech-icons {
       margin: 10px !important;
     }
+   
+    
+    .tech-icons::after {
+      font-size: 0.4em; /* Smaller font size for mobile view */
+    }
   }
   
   .tech-icons:hover {
@@ -495,18 +500,22 @@ html {
   }
   .tech-icons::after {
     content: attr(data-label);
-    font-size: 0.5em;
+    font-size: 0.5em; /* Adjust font size as needed */
     color: white;
-    background-color: rgba(117, 0, 250, 0.9);
+    background-color: rgba(117, 0, 250, 0.8);
     padding: 5px 10px;
     border-radius: 5px;
     position: absolute;
-    bottom: -30px; /* Position below the icon */
-    left: 50%;
-    transform: translateX(-50%);
+    top: 50%; /* Center text vertically */
+    left: 50%; /* Center text horizontally */
+    transform: translate(-50%, -50%); /* Adjust to center text */
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
+    z-index: 1; /* Ensure text appears above the icon */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Ensure text doesn’t overflow */
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
   }
   
   .tech-icons:hover::after {
