@@ -482,16 +482,7 @@ html {
     transition: all 0.4s ease 0s !important;
   }
   
-  @media (max-width: 767px) {
-    .tech-icons {
-      margin: 10px !important;
-    }
-   
-    
-    .tech-icons::after {
-      font-size: 0.4em; /* Smaller font size for mobile view */
-    }
-  }
+ 
   
   .tech-icons:hover {
     transform: scale(1.05) !important;
@@ -520,6 +511,18 @@ html {
   
   .tech-icons:hover::after {
     opacity: 1;
+  }
+
+
+  @media (max-width: 767px) {
+    .tech-icons {
+      margin: 10px !important;
+    }
+   
+    
+    .tech-icons::after {
+      font-size: 0.3em; /* Smaller font size for mobile view */
+    }
   }
   
   .tech-icon-images {
