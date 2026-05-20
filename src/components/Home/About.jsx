@@ -1,135 +1,64 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import LaptopImg from "../../assets/home-main.svg";
-import Tilt from "react-parallax-tilt";
-import {
-  AiFillGithub,
-  AiOutlineTwitter
-} from "react-icons/ai";
-import { FaLinkedinIn } from "react-icons/fa";
-import { SiFacebook, SiLeetcode } from "react-icons/si";
 
-
-
-const About = () => {
-    return (
-        <Container fluid className="home-about-section" id="about">
-          <Container>
-            <Row>
-              <Col md={8} className="home-about-description">
-                <h1 style={{ fontSize: "2.6em" }}>
-                  LET ME <span className="yellow"> INTRODUCE </span> MYSELF
-                </h1>
-                <p className="home-about-body">
-                 Hi, my name is <span className="yellow">Marjia Afroj </span>
-                 and I'm from <span className="yellow"> Dinajpur, Bangladesh.</span>
-                <br />
-                <br />
-                I am an enthusiastic and passionate aspiring web software developer with a strong background in Data Structure and Algorithm and full-stack development. I recently graduated from 
-                <b className="yellow"> Rajshahi University of Engineering and Technology </b>
-                 with a Bachelor's degree in 
-                 <b className="yellow"> Electrical and Computer Engineering </b>
-                in 2024 and I'm always looking for exciting challenges and opportunities to apply my skills in real-world projects.
-                
-                <br />
-                <br />
-                  As a
-                  <b className="yellow"> Full-Stack </b>developer,  
-                  I enjoy tackling new challenges and continuously expanding my skillset.
-                  <br />
-                  <br />I am proficient in
-                    <b className="yellow"> Javascript, </b>
-                    as well as have knowledge in programming languages such as 
-                  <b className="yellow"> C, C++, Python and SQL.</b>
-                  
-                  I have a passion for working
-                  with <b className="yellow">Node.js, MongoDB,</b> and
-                  <i>
-                    <b className="yellow">
-                      {" "}
-                      modern Javascript libraries and frameworks
-                    </b>
-                  </i>
-                  &nbsp; like
-                  <i>
-                    <b className="yellow"> React.js</b>
-                  </i>
-                  <br />
-                  <br />
-                  I am also interested in building new
-                  <i>
-                    <b className="yellow"> Web Technologies and Products, </b>
-                    as well as exploring areas related to
-                    <b className="yellow"> Artificial Intelligence.</b>
-                  </i>
-                  <br />
-                  
-                </p>
-              </Col>
-              <Col md={4} className="myAvtar">
-                <Tilt>
-                  <img src={LaptopImg} className="img-fluid" alt="avatar" />
-                </Tilt>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={12} className="home-about-social">
-                <h1>FIND ME ON</h1>
-                <p>
-                Please don't hesitate to reach out to me and <span className="yellow">connect.</span>
-                </p>
-                <ul className="home-about-social-links">
-                  <li className="social-icons">
-                    <a
-                      href="https://github.com/Marjia029"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="icon-colour  home-social-icons"
-                      aria-label="github"
-                    >
-                      <AiFillGithub />
-                    </a>
-                  </li>
-                  {/* <li className="social-icons">
-                    <a
-                      href="https://twitter.com/19sajib"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="icon-colour  home-social-icons"
-                      aria-label="twitter"
-                    >
-                      <AiOutlineTwitter />
-                    </a>
-                  </li> */}
-                  <li className="social-icons">
-                    <a
-                      href="https://www.linkedin.com/in/marjiaafroj/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="icon-colour  home-social-icons"
-                      aria-label="linkedin"
-                    >
-                      <FaLinkedinIn />
-                    </a>
-                  </li>
-                  <li className="social-icons">
-                    <a
-                      href="https://www.facebook.com/marjia029.afroj/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="icon-colour home-social-icons"
-                      aria-label="facebook"
-                    >
-                      <SiFacebook />
-                    </a>
-                  </li>
-                </ul>
-              </Col>
-            </Row>
-          </Container>
-        </Container>
-      );
-    
+function SectionHead({ num, label }) {
+  return (
+    <div className="section-head reveal">
+      <span className="section-num">{num}</span>
+      <div className="section-rule" />
+      <span className="section-label">{label}</span>
+    </div>
+  );
 }
 
-export default About
+export { SectionHead };
+
+const STATS = [
+  { num: <React.Fragment>1<sup>+</sup></React.Fragment>,  label: "Years of Experience", desc: "Building production-grade web applications" },
+  { num: <React.Fragment>20<sup>+</sup></React.Fragment>, label: "Projects Shipped",    desc: "From MVPs to enterprise-scale systems" },
+  { num: <React.Fragment>15<sup>+</sup></React.Fragment>, label: "Technologies",        desc: "Frontend, backend, cloud & design tools" },
+  { num: "infinity",                                      label: "Cups of Tea",         desc: "Fuel for every late-night session" },
+];
+
+const About = () => {
+  return (
+    <section id="about">
+      <div className="wrap">
+        <SectionHead num="01" label="About Me" />
+        <div className="about-grid">
+          <div className="about-body reveal">
+            <p>
+              I'm a <b>software engineer based in Dhaka, Bangladesh</b>, passionate
+              about turning complex problems into clean, intuitive digital products.
+            </p>
+            <p>
+              I graduated from <b>Rajshahi University of Engineering and Technology</b> with
+              a degree in Electrical and Computer Engineering. My journey started with an{" "}
+              <em>obsession</em> for how things look and feel on screen — that curiosity grew
+              into a full-stack career.
+            </p>
+            <p>
+              When I'm not coding you'll find me{" "}
+              <b>exploring distributed systems</b>, writing about backend engineering,
+              or hunting for the perfect cup of tea.
+            </p>
+            <blockquote className="pullquote">
+              "Make it work, make it right, make it beautiful."
+            </blockquote>
+          </div>
+
+          <div className="about-stats reveal d1">
+            {STATS.map(({ num, label, desc }) => (
+              <div className="stat" key={label}>
+                <div className="stat-num">{num}</div>
+                <div className="stat-label">{label}</div>
+                <div className="stat-desc">{desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;

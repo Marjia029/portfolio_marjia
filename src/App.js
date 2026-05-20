@@ -1,56 +1,51 @@
 import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate
-} from "react-router-dom";
-
-import Home from './pages/Home'
-import Skill from './pages/Skillset'
-import Project from './pages/Projects'
-import Resume from './pages/Resume'
-import Contact from './pages/Contact'
-import Education from "./pages/Education";
 
 import Navbar from "./components/Navbar/Navbar";
+import Hero from "./pages/Home";
+import About from "./components/Home/About";
+import Skills from "./pages/Skillset";
+import Experience from "./pages/Experience";
+import Projects from "./pages/Projects";
+import Education from "./pages/Education";
+import Writing from "./pages/Writing";
+import Contact from "./pages/Contact";
 import Footer from "./components/Footer/Footer";
-import Preloader from "./components/PreLoader"
-import ScrollToTop from "./components/ScrollToTop"
 
 import "./App.css";
-import "./style.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const [load, upadateLoad] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      upadateLoad(false);
-    }, 1200);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-    return () => clearTimeout(timer);
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("in")),
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    return () => io.disconnect();
   }, []);
 
   return (
-    <Router>
-      <Preloader load={load} />
-      <div className="App" id={load ? "no-scroll" : "scroll"}>
-        <Navbar />
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/skillset" element={<Skill />} />
-          <Route path="/education" element={<Education />} />
-          <Route path="/project" element={<Project />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Navigate to="/"/>} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <>
+      <Navbar scrolled={scrolled} />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Education />
+        <Writing />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 }
 
